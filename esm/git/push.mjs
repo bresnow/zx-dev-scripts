@@ -24,7 +24,8 @@ if (args.length > 0) {
 // Version prompt ... (if not provided current version is used)
 if (version === undefined) {
   version = await question(
-    `${chalk.green('Version? \n Current Version ') + chalk.cyan(pkg.data.version)
+    `${
+      chalk.green('Version? \n Current Version ') + chalk.cyan(pkg.data.version)
     }: `
   );
   version === '' ? (version = pkg.data.version) : (version = version.trim());
@@ -35,11 +36,11 @@ await pkg.save();
 
 //Commit Message (if not provided default message is used)
 if (message === undefined) {
-  message = await question('Message for commit : ');
+  message = await question(chalk.green('Message for commit : '));
   if (message === '' || message.length < 2) {
-    message = `Default Commit ${new Date(
-      Date.now()
-    ).toLocaleString()} | ${version}`;
+    message = `Default Commit ${new Date(Date.now())
+      .toLocaleString('en-US', { timeZone: 'America/New_York' })
+      .slice(0, -3)}`;
   }
 }
 
@@ -47,10 +48,10 @@ if (message === undefined) {
 
 await $`git status`;
 try {
-  await $`yarn prettier --check`;
+  await $`yarn prettier`;
 } catch (error) {
   console.log(chalk.red(error));
 }
 await $`git add --all`;
 await $`git commit -s -m ${`${message} | ${version}`}`;
-await $`git push -uf ${await $`git remote show`} ${await $`git branch --show-current`}`;
+await $`git push`;
