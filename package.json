@@ -1,7 +1,7 @@
 {
   "name": "zx-scripts",
   "version": "1.0.4",
-  "description": "A collection of Google ZX shell scripts. SysAdmin automation with all the wiggle room of Javascript.",
+  "description": "A collection of sysadmin playbooks made with Google ZX.",
   "type": "module",
   "scripts": {
     "build": "tsc",
