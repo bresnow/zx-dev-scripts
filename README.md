@@ -1,7 +1,10 @@
 # System Administration Playbook
 
 ## Why
-Each time we setup a new linux server, we need to install some software. Instead of manually doing it, we can automate it. This is the purpose of this playbook. In constant development. Playbooks are primarily geared for Git, Remix.Gun projects, Ubuntu > 18 and Docker Swarm.
+Automated and consistent VM management for unmanaged virtual servers.  In constant development. Playbooks are primarily geared for Git, Remix.Gun projects, Ubuntu > 18 and Docker Swarm. 
+
+## Goals
+- Alpine linux scripts for Docker images
 
 ## How
 Google Zx Javascript modules automate the installation of software and other tedious tasks .
