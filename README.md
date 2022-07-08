@@ -3,8 +3,6 @@
 ## Why
 Automated and consistent VM management for unmanaged virtual servers.  In constant development. Playbooks are primarily geared for Git, Remix.Gun projects, Ubuntu > 18 and Docker Swarm. 
 
-## Goals
-- Alpine linux scripts for Docker images
 
 ## How
 Google Zx Javascript modules automate the installation of software and other tedious tasks .
@@ -19,3 +17,5 @@ Execute the following commands in terminal:
 
 After running the `setup.sh` file, it will guide you through the installation process.
 
+## Goals
+- Alpine linux scripts for Docker images
