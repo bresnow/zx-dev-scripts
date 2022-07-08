@@ -1,6 +1,5 @@
 import { $ } from "zx";
 import "zx/globals";
-import { YAML } from "zx";
 import { read } from "fsxx";
 let cl = console.log;
 async function logs() {
