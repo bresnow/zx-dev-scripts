@@ -1,0 +1,51 @@
+chmod 755 setup.sh
+
+sudo apt install curl 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+source ~/.bashrc
+nvm install node
+npm i -g npm@latest
+npm install -g zx
+source ~/.bashrc
+wget https://raw.githubusercontent.com/foyzulkarim/linux-playbook/main/script.mjs
+zx script.mjs
+
+enable port 443 in browser (if a cloud instance)
+enable port 22 if not enabled both in shell and browser
+
+
+install docker
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+
+[latest docker compose is 1.29.2]
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo docker-compose --version
+
+git clone https://github.com/foyzulkarim/rbac-mern-boilerplate.git
+
+
+letsencrypt
+sudo apt install certbot python3-certbot-nginx
+
+sudo certbot --nginx -d parcelkoi.com -d www.parcelkoi.com
+sudo systemctl status certbot.timer
+
+renew: 
+sudo certbot renew --dry-run
+
+
+delete docker containers
+sudo docker ps -a
+sudo docker rm -f $(sudo docker ps -a -q)
+
+delete docker images
+sudo docker rmi $(sudo docker images -q)
