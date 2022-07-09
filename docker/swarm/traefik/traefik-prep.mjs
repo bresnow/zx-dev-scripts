@@ -3,6 +3,7 @@ import "zx/globals";
 /**
  * Creates the external network and labels needed for the swarm stack deployment.
  */
+
 try {
   await $`docker network create --driver=overlay traefik-public`;
 } catch (error) {

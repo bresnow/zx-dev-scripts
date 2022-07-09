@@ -44,8 +44,8 @@ sudo certbot renew --dry-run
 
 
 delete docker containers
-sudo docker ps -a
-sudo docker rm -f $(sudo docker ps -a -q)
+docker ps -a
+docker rm -f $(sudo docker ps -a -q)
 
 delete docker images
-sudo docker rmi $(sudo docker images -q)
+docker rmi $(sudo docker images -q)

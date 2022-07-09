@@ -20,11 +20,11 @@ if (shouldProceed === "y" || shouldProceed === "yes") {
   await sleep(1000);
   console.log("Hello, user!");
   console.log("First, we are updating and upgrading your system...");
-  await $`sudo apt update`;
-  await $`sudo apt upgrade`;
+  await $`sudo apt-get update`;
+  await $`sudo apt-get upgrade`;
   await sleep(1000);
   console.log("Now, we are installing the packages:");
-  await $`zx https://raw.githubusercontent.com/foyzulkarim/linux-playbook-javascript/main/script.mjs`;
+  await $`zx ./script.mjs`;
   await sleep(1000);
 } else {
   console.log(`You can't proceed.`);

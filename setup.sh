@@ -1,5 +1,4 @@
 #!/bin/bash
-# My first script
 echo "Setting up nvm!"
 sudo apt install curl 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
@@ -11,4 +10,4 @@ npm i -g npm@latest
 npm install -g zx
 source ~/.bashrc
 npx zx -v
-npx zx https://raw.githubusercontent.com/foyzulkarim/linux-playbook-javascript/main/index.mjs
+npx zx ./index.mjs
