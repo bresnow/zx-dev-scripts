@@ -11,7 +11,7 @@ try {
 try {
   let nodeID =
     await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`;
-  await $`docker node update --label-add traefik-public.traefik-public-certificates=true ${nodeID.stdout}`;
+  await $`docker node update --label-add traefik-public.traefik-public-certificates=true ${nodeID.stdout.trim()}`;
 } catch (error) {
   console.log(chalk.red(error));
 }
