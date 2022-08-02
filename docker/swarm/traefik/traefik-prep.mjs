@@ -9,8 +9,7 @@ try {
   console.log(chalk.red(error));
 }
 try {
-  await $`export NODE_ID=${await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`}`;
-  await $`docker node update --label-add traefik-public.traefik-public-certificates=true $NODE_ID`;
+  await $`docker node update --label-add traefik-public.traefik-public-certificates=true ${await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`.stdout.trim()}`;
 } catch (error) {
   console.log(chalk.red(error));
 }
