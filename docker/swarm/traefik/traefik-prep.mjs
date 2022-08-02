@@ -1,6 +1,4 @@
 #!/usr/bin/env zx
-import { $, chalk } from "zx";
-import "zx/globals";
 /**
  * Creates the external network and labels needed for the swarm stack deployment.
  */
