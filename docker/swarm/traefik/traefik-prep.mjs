@@ -9,7 +9,7 @@ try {
   console.log(chalk.red(error));
 }
 try {
-  await $`export NODE_ID=$(docker info -f '{{.Swarm.NodeID}}')`;
+  await $`export NODE_ID=${await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`}`;
   await $`docker node update --label-add traefik-public.traefik-public-certificates=true $NODE_ID`;
 } catch (error) {
   console.log(chalk.red(error));
