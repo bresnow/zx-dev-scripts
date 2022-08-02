@@ -1,3 +1,4 @@
+#!/usr/bin/env zx
 import { $, YAML } from "zx";
 import { read } from "fsxx";
 import "zx/globals";
