@@ -32,7 +32,6 @@ try {
     await $`export HASHED_PASSWORD=${hashed}`;
     await $`export EMAIL=${email}`;
     await $`export DOMAIN=${domain}`;
-    await $`docker stack deploy -c ${process.cwd()}/../stack-templates/traefik.yml traefik`;
   }
 } catch (error) {
   console.log(chalk.red(error));

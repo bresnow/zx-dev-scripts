@@ -99,3 +99,11 @@ if (shouldInstallDockerCompose.toLowerCase() === "y") {
 } else {
   console.log("Skipping docker-compose installation");
 }
+
+let initalizeSwarm = await question("Do you want to initialize Swarm? [y/n] ");
+if (initalizeSwarm.toLowerCase() === "y") {
+  let ip = await question("Advertise address: ");
+  await $`docker swarm init --advertise-addr ${ip}`;
+} else {
+  console.log("Skipping swarm initialization");
+}
