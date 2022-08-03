@@ -1,6 +1,6 @@
 {
   "name": "zx-scripts",
-  "version": "1.0.51",
+  "version": "\\",
   "description": "A collection of sysadmin playbooks made with Google ZX.",
   "type": "module",
   "scripts": {
