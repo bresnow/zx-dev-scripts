@@ -1,10 +1,12 @@
 {
   "name": "zx-scripts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A collection of sysadmin playbooks made with Google ZX.",
   "type": "module",
   "scripts": {
     "build": "tsc",
+    "deploy:traefik": "cross-env-shell USERNAME=$USERNAME HASHED_PASSWORD=$(openssl passwd -apr1) EMAIL=$EMAIL DOMAIN=$DOMAIN sudo docker stack deploy -c docker/swarm/stack-templates/traefik.yml traefik",
+    "prep:traefik": "zx docker/swarm/traefik/traefik-prep.mjs",
     "start": "node ./dist/index.js",
     "prettier": "prettier --write '**/*.{json,mjs}'",
     "push": "npx zx git/push.mjs"
@@ -17,6 +19,7 @@
     "zx": "^7.0.7"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "fsxx": "^0.1.0",
     "prettier": "^2.7.1",
     "yargs": "^17.5.1"

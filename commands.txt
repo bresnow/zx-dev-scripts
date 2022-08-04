@@ -33,15 +33,6 @@ sudo docker-compose --version
 git clone https://github.com/foyzulkarim/rbac-mern-boilerplate.git
 
 
-letsencrypt
-sudo apt install certbot python3-certbot-nginx
-
-sudo certbot --nginx -d parcelkoi.com -d www.parcelkoi.com
-sudo systemctl status certbot.timer
-
-renew: 
-sudo certbot renew --dry-run
-
 
 delete docker containers
 docker ps -a

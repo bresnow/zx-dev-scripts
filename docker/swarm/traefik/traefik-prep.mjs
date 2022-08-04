@@ -1,38 +1,30 @@
-#!/usr/bin/env zx
-/**
- * Creates the external network and labels needed for the swarm stack deployment.
- */
-
+import { $, question, chalk, argv, path } from "zx";
+import fs from "fs";
+let log = console.log.bind(console);
 try {
-  await $`docker network create --driver=overlay traefik-public`;
-} catch (error) {
-  console.log(chalk.red(error));
-}
-try {
-  let nodeID =
-    await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`;
-  await $`docker node update --label-add traefik-public.traefik-public-certificates=true ${nodeID.stdout.trim()}`;
-} catch (error) {
-  console.log(chalk.red(error));
-}
-
-try {
-  console.log(chalk.green("TRAEFIK BASICAUTH MIDDLEWARE"));
-  let username = await question(`USERNAME- `);
-  let password = await question(`PASSWORD- `);
-  let email = await question(`EMAIL- `);
-  let domain = await question(`DOMAIN- `);
-  if (username && password) {
-    username = username.trim();
-    password = password.trim();
-    email = email.trim();
-    domain = domain.trim();
-    let hashed = await $`openssl passwd -apr1 "${password}"`;
-    await $`export USERNAME=${username}`;
-    await $`export HASHED_PASSWORD=${hashed}`;
-    await $`export EMAIL=${email}`;
-    await $`export DOMAIN=${domain}`;
+  let chxprt =
+    argv["check-export"] !== undefined || argv["check-export"] === "true";
+  // $.shell = '/usr/bin/zsh'
+  let network = await $`sudo docker network ls --format {{.Name}}`;
+  network = network.stdout.toString();
+  network = network.split("\n").flatMap((x) => x.trim());
+  let hasnetwk = false;
+  for (let i = 0; i < network.length; i++) {
+    if (network[i] === "traefik-public") {
+      log(chalk.green.italic("*** Traefik Overlay Network Exists ***"));
+      hasnetwk = true;
+    }
   }
+  if (!hasnetwk) {
+    log(chalk.green.italic("*** Creating Traefik Overlay Network ***"));
+    await $`docker network create --driver=overlay traefik-public`;
+    let nodeID =
+      await $`docker node inspect --format="{{.ID}}" $(docker node ls -q)`;
+    nodeID = nodeID.stdout.toString().trim();
+    await $`docker node update --label-add traefik-public.traefik-public-certificates=true ${nodeID}`;
+  }
+
+  // await $`docker stack deploy -c ${path.join(__dirname, '..', 'stack-templates', 'traefik.yml')}`
 } catch (error) {
-  console.log(chalk.red(error));
+  throw new Error(chalk.red(error));
 }
