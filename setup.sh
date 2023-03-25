@@ -1,6 +1,8 @@
 #!/bin/bash
-echo "Setting up nvm!"
-sudo apt install curl 
+echo "Setting up curl zsh nvm!"
+sudo apt install curl zsh 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

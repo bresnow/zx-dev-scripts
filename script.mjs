@@ -11,8 +11,8 @@ await sleep(1000);
 console.log("Installing git");
 await $`sudo apt install -y git`;
 await $`git --version`;
-// await $`git config --global user.name "Your Name"`
-// await $`git config --global user.email "
+await $`git config --global user.name "Bresnow"`
+await $`git config --global user.email "bresnow@fltngmmth.com"`
 
 //net-tools
 await sleep(1000);
@@ -52,10 +52,10 @@ await $`sudo service nginx status`;
 
 // docker
 
-await $`zx https://raw.githubusercontent.com/bresnow/zx-dev-scripts/init/docker.mjs`;
+await $`zx https://raw.githubusercontent.com/bresnow/zx-dev-scripts/docker.mjs`;
 // docker-compose
 
-await $`zx https://raw.githubusercontent.com/bresnow/zx-dev-scripts/init/docker-compose.mjs`;
+await $`zx https://raw.githubusercontent.com/bresnow/zx-dev-scripts/docker/docker-compose.mjs`;
 
 let ip = await question("Docker Swarm advertise address: ");
 await $`sudo docker swarm init --advertise-addr ${ip}`;
